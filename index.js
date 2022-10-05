@@ -1,3 +1,3 @@
-const express = require('express');
-const app = express();
-app.listen(4494);
+const cow = require('./cow');
+
+console.log(cow.speak('moo'));
