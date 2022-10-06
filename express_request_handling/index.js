@@ -1,29 +1,44 @@
 const express = require('express');
 const app = express();
-let names = ['JH', 'Chris', 'Rhys', 'Dale', 'Bob'];
+let pets = ['Wednesday', 'Thistle', 'Rhodes', 'Agatha', 'Lorelei','Lusamine','Dawn','Jessie'];
 
 
-app.get('/', (req, res) => res.send('Hello, my name is Mimi!'));
-app.get('/getAll', (req, res) => res.send(names));
-app.get('/get/:id', (req, res) => res.send(names[req.params.id]));
+app.get('/', (req, res) => res.send('Hello, welsome to my list of my pets!'));
+app.get('/getAll', (req, res) => res.send(pets));
+app.get('/get/:id', (req, res) => res.send(pets[req.params.id]));
 app.get('/delete/:id', (req, res) => {
-    res.send(names.splice(req.params.id, 1));
+    res.send(pets.splice(req.params.id, 1));
 });
 
 app.use(express.json());    //Put BEFORE request handling
 
+app.use((req, res, next) => {
+    const logEntry = `host: ${req.host}
+    ip: ${req.ip}
+    method: ${req.method}
+    path: ${req.path}
+    time: ${new Date()}`;
+    console.log(logEntry);
+    next();
+});
+
+
+
+app.get('/', (req, res) =>  {
+    res.send('Hello, world!');
+});
 app.post('/create', (req, res) => {
-    const name = req.body.name;
-    names.push(name);
-    res.status(201).send(`${name} added successfully`);
+    const pets = req.body.pets;
+    names.push(pets);
+    res.status(201).send(`${pets} added successfully`);
 });
 
 app.post('/replace/:index', (req, res) => {
-    const name = req.query.name;
+    const npets = req.query.pets;
     const index = req.params.index;
-    const old = names[index];
-    names[index] = name;
-    res.status(202).send(`${old} successfully replaced with ${name}`);
+    const old = petNames[index];
+    petNames[index] = pets;
+    res.status(202).send(`${old} successfully replaced with ${pets}`);
 });
 
 const server = app.listen(4494, () => console.log('Server successfully started on port $(server.address().port'));
