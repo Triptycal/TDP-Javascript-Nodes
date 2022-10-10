@@ -16,7 +16,7 @@ app.use((req, res, next) => {
     path: ${req.path}
     time: ${new Date()}`;
     console.log(logEntry);
-    next();
+    return next();
 });
 
 
