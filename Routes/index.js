@@ -4,32 +4,29 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
-const duckRoutes = require("./routes/ducks");
+const petRoutes = require("./routes/pets");
 
 app.use(bodyParser.json());
 
 // app.use - adds a piece of middleware to the chain
 app.use((req, res, next) => {
-    console.log("Request recevied at", new Date());
-   return next(); // calls the next func
-})
-
-// IS the next function
-app.use((req, res, next) => {
-    console.log("I just exist to be an example");
-    // return next("ruh-roh");
-    return  next();
-})
-
-app.get("/hello", (req, res) => {
-    res.send("Hello, World!")
+    const logEntry = `host: ${req.host}
+    ip: ${req.ip}
+    method: ${req.method}
+    path: ${req.path}
+    time: ${new Date()}`;
+    console.log(logEntry);
+    next();
 });
 
-app.use("/ducks", duckRoutes);
 
-app.use((req, res) => {
-    console.log("Thom example");
-})
+
+app.get('/', (req, res) =>  {
+    res.send('Hello, world!');
+});
+
+app.use("/pets", petRoutes);
+
 
 app.use((err, req, res, next) => {
     console.log(err);
