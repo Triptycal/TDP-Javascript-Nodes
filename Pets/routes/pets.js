@@ -1,6 +1,6 @@
 const router = require(`express`).Router();
 
-const { nameModel } = require("../db");
+const { petModel } = require("../db");
 
 //let group = ["Luke", "Thom", "Fauzia", "Mimi", "Shakeel", "Michael"];
 
