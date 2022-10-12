@@ -6,7 +6,7 @@ const bodyParser = require("body-parser")
 
 app.use(bodyParser.json());
 
-const route = require(`./routes/names.js`);
+const route = require(`./routes/pets.js`);
 
 app.use(route);
 
