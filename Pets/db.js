@@ -10,13 +10,13 @@ mongoose.connect("mongodb://localhost:27017/tdp_db",
 
 
 //makes a new schema
-const nameSchema = new mongoose.Schema({
-    mood: {
+const petSchema = new mongoose.Schema({
+    name: {
         type: String,
         require: true
     },
-    job: String,
-    name: {
+    breed: String,
+    species: {
         type: String,
         require: true
 
@@ -25,10 +25,10 @@ const nameSchema = new mongoose.Schema({
 
 //will create a pluralised version
 
-const nameModel = mongoose.model("name", nameSchema); // object with all mongo functions
+const petModel = mongoose.model("pet", petSchema); // object with all mongo functions
 
 module.exports = {
-    nameModel
+    petModel
 }
 
 // sub docs/childschema
