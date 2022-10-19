@@ -23,8 +23,8 @@ import {
              </ul>
              <p>{id}</p>
              <Routes>
-          <Route path="/Users" element={<Users/>} />
-          <Route path="/Users/:id" element={<Users/>} />
+          <Route path="/Users/*" element={<Users/>} />
+          <Route path="/Users/:id/*" element={<Users/>} />
         </Routes>
          </>
      );

@@ -33,8 +33,8 @@ function App() {
         <Routes>
           <Route path="/Home" element={<Home/>} />
           <Route path="/Contact" element={<Contact/>} />
-          <Route path="/Users" element={<Users/>} />
-          <Route path="/Users/:id" element={<Users/>} />
+          <Route path="/Users/*" element={<Users/>} />
+          <Route path="/Users/:id/*" element={<Users/>} />
         </Routes>
         <footer>
           I AM A FOOTER
