@@ -3,6 +3,7 @@ import React from 'react';
 import {
   BrowserRouter as Router, Link, Route, Routes,
 } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Home from './Routing/Home.jsx';
 import Contact from './Routing/Contact.jsx';
@@ -12,17 +13,17 @@ import Navigation from './Routing/Navigation.jsx';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" >
       <Router>
         <nav>
           <Link to="/Home">
-            Home
+          <button class="btn btn-dark" type="button">Home</button>
           </Link>
           <Link to="/Contact">
-            <button type="button">Contact Us</button>
+            <button class="btn btn-dark" type="button">Contact Us</button>
           </Link>
           <Link to="/Users">
-            Users
+          <button class="btn btn-dark" type="button">Users</button>
           </Link>
           <navigation/>
         </nav>
@@ -37,7 +38,7 @@ function App() {
           <Route path="/Users/:id/*" element={<Users/>} />
         </Routes>
         <footer>
-          I AM A FOOTER
+          <p class="text-warning bg-dark">I AM A FOOTER</p>
         </footer>
       </Router>
     </div>
